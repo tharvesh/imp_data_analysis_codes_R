@@ -1,7 +1,5 @@
 #To plot the variation of PC's to select the PC's for
-
 pca <- prcomp(t(mat)) #Can be assay(DESeqobj) for summarizedExperiment object or exprs(DESeqobj) for ExpressionSet
-
 sd <- pca$sdev
 var <- sd^2
 var.percent <- var/sum(var) * 100
@@ -9,7 +7,6 @@ barplot(var.percent,...) #Add all the parameters necessary to make plot look goo
 
 #For correlation scatterplot matrix
 #Courtesy: rafalab, snippet from HarvardX 
-
 panel.cor <- function(x, y, digits = 2, prefix = "", cex.cor, ...)  {
   usr <- par("usr"); on.exit(par(usr))
   par(usr = c(0, 1, 0, 1))
@@ -21,4 +18,7 @@ panel.cor <- function(x, y, digits = 2, prefix = "", cex.cor, ...)  {
 }
 pairs(mat, asp=1, col=rgb(0,0,0,.3), lower.panel=panel.cor)
 
-
+#Multi-dimenstional plotting
+#Matrix can be expression of most variable genes 
+mds <- cmdscale(t(mat))
+plot(mds[,1],mds[,2],...)
