@@ -3,7 +3,7 @@ pca <- prcomp(t(mat)) #Can be assay(DESeqobj) for summarizedExperiment object or
 sd <- pca$sdev
 var <- sd^2
 var.percent <- var/sum(var) * 100
-barplot(var.percent,...) #Add all the parameters necessary to make plot look good
+barplot(var.percent,...) #Add all the parameters necessary to make plot looks good
 
 #For correlation scatterplot matrix
 #Courtesy: rafalab, snippet from HarvardX 
